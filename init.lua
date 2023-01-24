@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "default_theme",
+  colorscheme = "everblush",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -227,14 +227,25 @@ local config = {
   },
 
   -- Configure plugins
+  -- Any new plugins will require you to restart nvim and run :PackerSync
   plugins = {
-    init = {
+    init =  {
+      -- Discord Rich Presence
+      { 
+        "andweeb/presence.nvim", config = function()
+          require('everblush').setup({ nvim_tree = { contrast = true } })
+        end
+      },
+
+      -- Theme
+      { 'Everblush/everblush.nvim', as = 'everblush' },
+
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
 
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
-      -- { "andweeb/presence.nvim" },
+ 
       -- {
       --   "ray-x/lsp_signature.nvim",
       --   event = "BufRead",
