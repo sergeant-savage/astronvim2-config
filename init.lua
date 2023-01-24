@@ -1,4 +1,4 @@
---              AstroNvim Configuration Table
+-- The Sergeant-Savage Neovim configuration table
 -- All configuration changes should go inside of the table below
 
 -- You can think of a Lua "table" as a dictionary like data structure the
@@ -71,6 +71,7 @@ local config = {
   -- end,
 
   -- Set dashboard header
+  -- I've used an ASCII version of the Orbit logo to remind me why I love to code.
   header = {
 "               WWWNNNNNNWWW",
 "          WWXK0OkxxxxxxxxkO0KXWW",
