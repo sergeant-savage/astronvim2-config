@@ -30,6 +30,10 @@ local config = {
 
   -- Add highlight groups in any theme
   highlights = {
+    -- Darken Default Everblush Background
+    everblush = {
+      Normal = { bg = '#121b1e'},
+    }
     -- init = { -- this table overrides highlights in all themes
     --   Normal = { bg = "#000000" },
     -- }
@@ -42,6 +46,7 @@ local config = {
   options = {
     opt = {
       -- set to true or false etc.
+      termguicolors = true,
       relativenumber = true, -- sets vim.opt.relativenumber
       number = true, -- sets vim.opt.number
       spell = false, -- sets vim.opt.spell
@@ -96,50 +101,6 @@ local config = {
 "            WWNXK00000000KXNWW",
 "",
 },
-
-  -- Default theme configuration
-  default_theme = {
-    -- Modify the color palette for the default theme
-    colors = {
-      fg = "#abb2bf",
-      bg = "#1e222a",
-    },
-    highlights = function(hl) -- or a function that returns a new table of colors to set
-      local C = require "default_theme.colors"
-
-      hl.Normal = { fg = C.fg, bg = C.bg }
-
-      -- New approach instead of diagnostic_style
-      hl.DiagnosticError.italic = true
-      hl.DiagnosticHint.italic = true
-      hl.DiagnosticInfo.italic = true
-      hl.DiagnosticWarn.italic = true
-
-      return hl
-    end,
-    -- enable or disable highlighting for extra plugins
-    plugins = {
-      aerial = true,
-      beacon = false,
-      bufferline = true,
-      cmp = true,
-      dashboard = true,
-      highlighturl = true,
-      hop = false,
-      indent_blankline = true,
-      lightspeed = false,
-      ["neo-tree"] = true,
-      notify = true,
-      ["nvim-tree"] = false,
-      ["nvim-web-devicons"] = true,
-      rainbow = true,
-      symbols_outline = false,
-      telescope = true,
-      treesitter = true,
-      vimwiki = false,
-      ["which-key"] = true,
-    },
-  },
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -232,14 +193,15 @@ local config = {
   plugins = {
     init =  {
       -- Discord Rich Presence
-      { 
-        "andweeb/presence.nvim", config = function()
-          require('everblush').setup({ nvim_tree = { contrast = true } })
-        end
-      },
+      { "andweeb/presence.nvim" },
 
       -- Theme
-      { 'Everblush/everblush.nvim', as = 'everblush' },
+      { 'Everblush/everblush.nvim', as = 'everblush', config = function()
+          require('everblush').setup({
+            nvim_tree = { contrast = true },
+          })
+        end
+      },
 
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
