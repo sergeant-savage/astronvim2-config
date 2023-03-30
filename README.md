@@ -1,5 +1,7 @@
 # My AstroNvim config
 
+NOTE: This project is now archived, as AstroNvim has moved to version 3. You can find my new config [here](https://github.com/sergeant-savage/astronvim3-config). 
+
 This is my AstroNvim config. It contains my personal preferences for my development environment.
 
 ## Installation
